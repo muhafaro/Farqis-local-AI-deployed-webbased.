@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Farqis Local Assistant</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <aside class="side-panel" aria-label="Farqis controls">
+        <div class="identity">
+          <div class="mark" aria-hidden="true">FQ</div>
+          <div>
+            <h1>Farqis</h1>
+            <p>Mac mini local assistant</p>
+          </div>
+        </div>
+
+        <div class="status-card">
+          <span class="status-dot" id="statusDot"></span>
+          <div>
+            <strong id="assistantState">Standing by</strong>
+            <small id="clockLine">--</small>
+          </div>
+        </div>
+
+        <div class="control-stack">
+          <button id="listenButton" class="primary" type="button" title="Speak to Farqis">
+            <span aria-hidden="true">◉</span>
+            Listen
+          </button>
+          <button id="briefButton" type="button" title="Read current briefing">
+            <span aria-hidden="true">◌</span>
+            Briefing
+          </button>
+          <button id="muteButton" type="button" title="Toggle Farqis voice">
+            <span aria-hidden="true">◎</span>
+            Voice on
+          </button>
+        </div>
+
+        <section class="module">
+          <h2>Mac quick actions</h2>
+          <div class="action-list" id="quickActions"></div>
+        </section>
+      </aside>
+
+      <section class="command-center" aria-label="Farqis command center">
+        <div class="hero-grid">
+          <section class="reactor-panel" aria-label="Farqis core visual">
+            <canvas id="reactorCanvas" width="620" height="440"></canvas>
+            <div class="core-readout">
+              <span>FARQIS CORE</span>
+              <strong id="coreMode">LOCAL</strong>
+            </div>
+          </section>
+
+          <section class="brief-panel">
+            <div class="panel-title">
+              <h2>Mission board</h2>
+              <span id="todayLabel">Today</span>
+            </div>
+            <div class="metric-row">
+              <article>
+                <span>Session</span>
+                <strong id="sessionTime">00:00</strong>
+              </article>
+              <article>
+                <span>Commands</span>
+                <strong id="commandCount">0</strong>
+              </article>
+              <article>
+                <span>Notes</span>
+                <strong id="noteCount">0</strong>
+              </article>
+            </div>
+            <div class="briefing" id="briefingText"></div>
+          </section>
+        </div>
+
+        <div class="console-grid">
+          <section class="terminal-panel">
+            <div class="panel-title">
+              <h2>Command channel</h2>
+              <span id="speechSupport">Voice check</span>
+            </div>
+            <div class="conversation" id="conversation" aria-live="polite"></div>
+            <form class="command-form" id="commandForm">
+              <input id="commandInput" type="text" autocomplete="off" placeholder="Ask Farqis: open notes, system status, remember..." />
+              <button class="primary" type="submit" title="Send command">Send</button>
+            </form>
+          </section>
+
+          <section class="module-panel">
+            <div class="panel-title">
+              <h2>Local memory</h2>
+              <button id="clearMemory" type="button" title="Clear saved notes">Clear</button>
+            </div>
+            <form class="note-form" id="noteForm">
+              <input id="noteInput" type="text" autocomplete="off" placeholder="Add a note for Farqis" />
+              <button type="submit" title="Save note">Save</button>
+            </form>
+            <ul class="note-list" id="noteList"></ul>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
